@@ -6,7 +6,7 @@ require (
 	fyne.io/fyne/v2 v2.3.0-rc1
 	github.com/blang/semver/v4 v4.0.0
 	github.com/civilware/derodpkg v0.0.0-20221115180116-fd3d70a98d11
-	github.com/deroproject/derohe v0.0.0-20221027103319-358fab62bdf4
+	github.com/deroproject/derohe v0.0.0-20221216151515-8463b9b22d6a
 	github.com/docopt/docopt-go v0.0.0-20180111231733-ee0de3bc6815
 	github.com/gorilla/websocket v1.5.0
 	golang.org/x/sys v0.0.0-20220520151302-bc2c85ada10a
