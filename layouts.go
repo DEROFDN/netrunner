@@ -163,7 +163,7 @@ func layoutMain() fyne.CanvasObject {
 	btnStartMiner := widget.NewButton("RUN", nil)
 	btnStartMiner.OnTapped = func() {
 		if m.Mission == 0 {
-			go startRunner(bw.chain.IntegratorAddress().String(), fmt.Sprintf("0.0.0.0:%d", globals.Config.GETWORK_Default_Port), m.Threads)
+			go startRunner(bw.chain.IntegratorAddress().String(), fmt.Sprintf("127.0.0.1:%d", globals.Config.GETWORK_Default_Port), m.Threads)
 			minerTitle.Text = "Running"
 			minerTitle.Color = colors.red
 			minerTitle.Refresh()
@@ -538,8 +538,17 @@ func layoutMain() fyne.CanvasObject {
 						} else {
 							progress = fmt.Sprintf("%.2f", percent) + "%"
 						}
-						daemonTitle.Text = "Syncing... " + progress
-						daemonTitle.Color = colors.white
+
+						if bw.chain.Get_Height() == -1 && status.fastsync {
+							daemonTitle.Text = "Finalizing Bootstrap... "
+							daemonTitle.Color = colors.white
+						} else if bw.chain.Get_Height() > 20000 && status.fastsync {
+							daemonTitle.Text = "Bootstrap Error - Full Syncing... " + progress
+							daemonTitle.Color = colors.white
+						} else {
+							daemonTitle.Text = "Syncing... " + progress
+							daemonTitle.Color = colors.white
+						}
 						daemonTitle.Refresh()
 						if m.Mission == 0 {
 							btnStartMiner.Disable()
