@@ -542,9 +542,6 @@ func layoutMain() fyne.CanvasObject {
 						if bw.chain.Get_Height() == -1 && status.fastsync {
 							daemonTitle.Text = "Finalizing Bootstrap... "
 							daemonTitle.Color = colors.white
-						} else if bw.chain.Get_Height() > 20000 && status.fastsync {
-							daemonTitle.Text = "Bootstrap Error - Full Syncing... " + progress
-							daemonTitle.Color = colors.white
 						} else {
 							daemonTitle.Text = "Syncing... " + progress
 							daemonTitle.Color = colors.white
