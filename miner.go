@@ -258,7 +258,7 @@ func getwork(wallet_address string) {
 		}
 
 		if err = m.Connection.ReadJSON(&result); err != nil {
-			globals.Logger.Error(err, "[Miner] Error connecting to server: %s\n", m.Daemon)
+			globals.Logger.Error(err, "[Miner] Error connecting to server")
 			continue
 		}
 

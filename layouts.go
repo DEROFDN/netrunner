@@ -468,7 +468,7 @@ func layoutMain() fyne.CanvasObject {
 						minerTitle.Refresh()
 						res.miner.Resource = resourceMinerOnPng
 						res.miner.Refresh()
-						btnStartMiner.Text = "        END        "
+						btnStartMiner.Text = "END"
 						btnStartMiner.Refresh()
 					} else {
 						hashrateLabel.Color = colors.gray
@@ -496,7 +496,7 @@ func layoutMain() fyne.CanvasObject {
 						res.miner.Resource = resourceMinerOffPng
 						res.miner.Refresh()
 						m.Hashrate = ""
-						btnStartMiner.Text = "        RUN        "
+						btnStartMiner.Text = "RUN"
 						btnStartMiner.Refresh()
 					}
 
@@ -526,11 +526,10 @@ func layoutMain() fyne.CanvasObject {
 					}
 					radSync.Disable()
 
-					bestHeight, _ := p2p.Best_Peer_Height()
-					if int64(bw.chain.Get_Height()) != bestHeight {
-						best, _ := p2p.Best_Peer_Height()
+					peerHeight, _ := p2p.Best_Peer_Height()
+					if int64(bw.chain.Get_Height()) != peerHeight {
 						progress := ""
-						percent := float64(bw.chain.Get_Height()) / float64(best) * 100
+						percent := float64(bw.chain.Get_Height()) / float64(peerHeight) * 100
 						if percent <= 0 {
 							progress = ""
 						} else if percent >= 100 {
@@ -540,13 +539,21 @@ func layoutMain() fyne.CanvasObject {
 						}
 
 						if bw.chain.Get_Height() == -1 && status.fastsync {
+							status.bootstrap = true
 							daemonTitle.Text = "Finalizing Bootstrap... "
 							daemonTitle.Color = colors.white
+							/*
+								} else if peerHeight-bw.chain.Get_Height() > 20000 && status.fastsync && status.bootstrap {
+									daemonTitle.Text = "Error - Full Syncing... " + progress
+									daemonTitle.Color = colors.white
+								}
+							*/
 						} else {
 							daemonTitle.Text = "Syncing... " + progress
 							daemonTitle.Color = colors.white
 						}
 						daemonTitle.Refresh()
+
 						if m.Mission == 0 {
 							btnStartMiner.Disable()
 						}
@@ -566,7 +573,7 @@ func layoutMain() fyne.CanvasObject {
 					ver := strings.Split(status.version, ".DEROHE")
 					version.Text = ver[0]
 					uptime.Text = status.uptime
-					height.Text = fmt.Sprintf("%d / %d", bw.chain.Get_Height(), bestHeight)
+					height.Text = fmt.Sprintf("%d / %d", bw.chain.Get_Height(), peerHeight)
 					btime.Text = fmt.Sprintf("%.2f", status.block_time)
 					diff.Text = fmt.Sprintf("%d", status.difficulty)
 					supply.Text = globals.FormatMoney(status.supply)

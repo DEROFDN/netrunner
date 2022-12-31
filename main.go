@@ -38,6 +38,7 @@ type App struct {
 type Status struct {
 	// Daemon status
 	active          int64
+	bootstrap       bool
 	integrator      string
 	ip_daemon       string
 	network         bool
