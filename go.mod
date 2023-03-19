@@ -5,8 +5,8 @@ go 1.19
 require (
 	fyne.io/fyne/v2 v2.3.0-rc1
 	github.com/blang/semver/v4 v4.0.0
-	github.com/civilware/derodpkg v0.0.0-20230219175057-4906afa5cdaa
-	github.com/deroproject/derohe v0.0.0-20230219151438-e855701f67c9
+	github.com/civilware/derodpkg v0.0.0-20230319115400-09f37d6296d2
+	github.com/deroproject/derohe v0.0.0-20230319083715-8d446afdaef8
 	github.com/docopt/docopt-go v0.0.0-20180111231733-ee0de3bc6815
 	github.com/gorilla/websocket v1.5.0
 	golang.org/x/sys v0.0.0-20220520151302-bc2c85ada10a
