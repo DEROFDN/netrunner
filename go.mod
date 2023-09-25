@@ -3,9 +3,9 @@ module github.com/DEROFDN/netrunner
 go 1.19
 
 require (
-	fyne.io/fyne/v2 v2.3.0-rc1
+	fyne.io/fyne/v2 v2.4.0
 	github.com/blang/semver/v4 v4.0.0
-	github.com/civilware/derodpkg v0.0.0-20230319115400-09f37d6296d2
+	github.com/civilware/derodpkg v0.0.0-20230617141607-167f36c3d60a
 	github.com/deroproject/derohe v0.0.0-20230319083715-8d446afdaef8
 	github.com/docopt/docopt-go v0.0.0-20180111231733-ee0de3bc6815
 	github.com/gorilla/websocket v1.5.0
