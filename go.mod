@@ -4,6 +4,7 @@ go 1.19
 
 require (
 	fyne.io/fyne/v2 v2.4.0
+	fyne.io/fyne/v2 v2.4.0
 	github.com/blang/semver/v4 v4.0.0
 	github.com/civilware/derodpkg v0.0.0-20230617141607-167f36c3d60a
 	github.com/deroproject/derohe v0.0.0-20230604143809-765b2db1f482
